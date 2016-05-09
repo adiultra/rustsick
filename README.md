@@ -2,3 +2,9 @@
 
 # RustSick
 So Sick of Rust : A collection of my first rust projects
+
+## Quotes
+
+> in rust we trust
+fire a rocket with rust thrust
+by : _@ingoreti_

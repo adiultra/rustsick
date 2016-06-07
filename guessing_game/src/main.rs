@@ -23,11 +23,11 @@ fn main() {
         // guess is a mutable empty string
         let mut guess = String::new();
 
-        // Get input from user
+        // Get input from user in guess
         io::stdin().read_line(&mut guess)
             .expect("Failed to read line");
 
-        // Convert and shadow guess into a unsigned 32bit integer
+        // Convert and shadow(displace) guess into a unsigned 32bit integer
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,         // Match num if everything is OK
             Err(_) => continue,     // Continue even if anything != OK happens
@@ -37,8 +37,8 @@ fn main() {
 
         // Match the respective value of guess wrt secret number
         match guess.cmp(&secret_number) {
-            Ordering::Less    => println!("Too small!"),
-            Ordering::Greater => println!("Too big!"),
+            Ordering::Less    => println!("Too small! \n"),
+            Ordering::Greater => println!("Too big! \n"),
             Ordering::Equal   => {
                 println!("You Win!");
                 println!("Total Chances used => {}", chances);

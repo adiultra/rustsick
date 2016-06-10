@@ -7,7 +7,11 @@ fn display(array: &[[i32; 7]; 7]) {
 
     for row in array {
         for element in row {
-            print!("{} ", element);
+            match element {
+                &1 => print!("x "),
+                &2 => print!("o "),
+                _ => print!("  ")
+            }
         }
 
         print!("\n");
@@ -67,16 +71,21 @@ fn main() {
 
 
     for _ in 1..10 {
+        // Display the game surface
         display(&surface);
-        println!("Enter the row and coloumns");
+
+        // Ask for coloumn v and row >
+        println!("Enter the row > and coloumn v");
         let index: [usize; 2] = input();
 
         if check(&index) {
+            // Change element to 1 if chance is 0
             if chance == 0 {
                 surface[index[0]][index[1]] = 1;
                 chance = 1;
             }
 
+            // otherwise change element to 2
             else {
                 surface[index[0]][index[1]] = 2;
                 chance = 0;

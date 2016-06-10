@@ -76,11 +76,13 @@ fn main() {
                 surface[index[0]][index[1]] = 1;
                 chance = 1;
             }
+
             else {
                 surface[index[0]][index[1]] = 2;
                 chance = 0;
             }
         }
+
         else {
             println!("Wrong Indexes, Try again");
         }

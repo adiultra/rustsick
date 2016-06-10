@@ -21,6 +21,8 @@ fn display(array: &[[i32; 7]; 7]) {
     println!("=============");
 }
 
+/// # input
+/// takes input and gives two usize integers
 fn input() -> [usize; 2] {
     // integer is a mutable empty string
     let mut integer = String::new();
@@ -29,28 +31,33 @@ fn input() -> [usize; 2] {
     // Get input from user in integer
     io::stdin().read_line(&mut integer)
         .expect("Failed to read line");
-
     io::stdin().read_line(&mut integer2)
         .expect("Failed to read line");
 
-    // Convert and shadow(displace) integer into a 32bit integer
+    // Convert and shadow(displace) integer into a usize integer
     let integer: usize = match integer.trim().parse() {
-        Ok(num) => num,         // Match num if everything is OK
-        Err(_) => 0,     // Continue even if anything != OK happens
+        Ok(num) => num,     // Match num if everything is OK
+        Err(_) => 8,        // Set num > 7 if anything != OK happens
+                            // This exits the check process and displays invalid
     };
     let integer2: usize = match integer2.trim().parse() {
-        Ok(num) => num,         // Match num if everything is OK
-        Err(_) => 0,     // Continue even if anything != OK happens
+        Ok(num) => num,     // Match num if everything is OK
+        Err(_) => 8,        // Set num > 7 if anything != OK happens
+                            // This exits the check process and displays invalid
     };
 
     [integer, integer2]
 }
 
-fn check(indices: &[usize; 2]) -> bool {
+/// # check
+/// checks wether the indices are correct or not and the place there is filled
+fn check(indices: &[usize; 2], array: &[[i32; 7]; 7]) -> bool {
     let mut condition = false;
     if 7 > indices[0] {
-        if 7 > indices[0] {
-            condition = true;
+        if 7 > indices[1] {
+            if array[indices[0]][indices[1]] == 0 {
+                condition = true;
+            }
         }
     }
 
@@ -79,7 +86,7 @@ fn main() {
         println!("Enter the row > and coloumn v");
         let index: [usize; 2] = input();
 
-        if check(&index) {
+        if check(&index, &surface) {
             // Change element to 1 if chance is 0
             if chance == 0 {
                 surface[index[0]][index[1]] = 1;
@@ -90,7 +97,7 @@ fn main() {
                 chance = 0;
             }
         } else {
-            println!("Wrong Indexes, Try again");
+            println!("Wrong Indexes or place filled, Try again");
         }
     }
 

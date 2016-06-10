@@ -1,0 +1,6 @@
+[package]
+name = "four-in-a-row"
+version = "0.1.0"
+authors = ["Aditya Ultra <adityaultra4@gmail.com>"]
+
+[dependencies]

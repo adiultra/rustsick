@@ -3,6 +3,7 @@ use std::io;
 /// # display
 /// displays the surface of the game
 fn display(array: &[[i32; 7]; 7]) {
+    println!("=============");
     println!("0 1 2 3 4 5 6");
 
     for row in array {
@@ -83,16 +84,12 @@ fn main() {
             if chance == 0 {
                 surface[index[0]][index[1]] = 1;
                 chance = 1;
-            }
-
-            // otherwise change element to 2
-            else {
+            } else {
+                // otherwise change element to 2
                 surface[index[0]][index[1]] = 2;
                 chance = 0;
             }
-        }
-
-        else {
+        } else {
             println!("Wrong Indexes, Try again");
         }
     }

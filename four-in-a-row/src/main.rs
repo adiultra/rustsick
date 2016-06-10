@@ -75,8 +75,7 @@ fn main() {
         [0, 0, 0, 0, 0, 0, 0]
     ];
 
-    let mut chance = 0;
-
+    let mut chance = 0; // variable to mark chances of X and O
 
     for _ in 1..10 {
         // Display the game surface
@@ -87,8 +86,9 @@ fn main() {
         let index: [usize; 2] = input();
 
         if check(&index, &surface) {
-            // Change element to 1 if chance is 0
+            // check everything is OK
             if chance == 0 {
+                // Change element to 1 if chance is 0
                 surface[index[0]][index[1]] = 1;
                 chance = 1;
             } else {
@@ -97,6 +97,7 @@ fn main() {
                 chance = 0;
             }
         } else {
+            // Print the error
             println!("Wrong Indexes or place filled, Try again");
         }
     }

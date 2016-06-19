@@ -1,5 +1,6 @@
+use std::io;
 struct Todo {
-    todo: &'static str,
+    todo: String,
     index: i32,
 }
 
@@ -9,15 +10,23 @@ impl Todo {
     }
 }
 
+struct List {
+    list: &'static mut Vec<Todo>,
+}
+
+impl List {
+    fn add_todo(&self) {
+        let mut content = String::new();
+
+        io::stdin().read_line(&mut content)
+            .expect("Failed to read line");
+
+        let new: Todo = Todo{todo: content, index: 0};
+
+        self.list.push(new);
+    }
+}
 
 fn main() {
-    let my_todo = Todo {
-        todo: "Awesome goes amazing",
-        index: 0
-    };
-
-    println!("The Todo at {0} contains : {1}", my_todo.index, my_todo.todo);
-
-    my_todo.print_my_content();
 
 }

@@ -9,7 +9,7 @@ fn input() -> i64 {
     io::stdin().read_line(&mut val).expect("");
     let val: i64 = match val.trim().parse() {
         Ok(num) => num,     // Match num if everything is OK
-        Err(_) => 1,      // Set num = 1 if anything != OK happens
+        Err(_) => 1,        // Set num = 1 if anything != OK happens
                             // This exits the check process and displays invalid
     };
     val

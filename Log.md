@@ -22,6 +22,9 @@ print!("Hello");    // prints Hello
 
 let banana = 26;
 println!("Hi, {} Bananas are left", banana); // Replaces {} with value of `banana` i.e. 26
+
+
+let num = String::new;
 ```
 
 ## Conditional
